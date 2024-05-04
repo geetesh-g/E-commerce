@@ -3,7 +3,88 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>E-commerce</title>
+		<link rel="stylesheet" href="index.css" />
 	</head>
-	<body></body>
+	<body>
+		<header>
+			<h1>Shop what floats in your mind</h1>
+		</header>
+		<main id="container"></main>
+	</body>
+	<script>
+		let pdtArr = [
+			{
+				url: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/377757/04/sv01/fnd/AUS/fmt/png/ForeverRun-NITRO%E2%84%A2-Men's-Running-Shoes",
+				prdtName: "PUMA NITRO Shoues",
+				price: 14999,
+				id: 1,
+			},
+			{
+				url: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/377757/04/sv01/fnd/AUS/fmt/png/ForeverRun-NITRO%E2%84%A2-Men's-Running-Shoes",
+				prdtName: "PUMA NITRO Shoues",
+				price: 14999,
+				id: 2,
+			},
+			{
+				url: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/377757/04/sv01/fnd/AUS/fmt/png/ForeverRun-NITRO%E2%84%A2-Men's-Running-Shoes",
+				prdtName: "PUMA NITRO Shoues",
+				price: 14999,
+				id: 3,
+			},
+			{
+				url: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/377757/04/sv01/fnd/AUS/fmt/png/ForeverRun-NITRO%E2%84%A2-Men's-Running-Shoes",
+				prdtName: "PUMA NITRO Shoues",
+				price: 14999,
+				id: 4,
+			},
+			{
+				url: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/377757/04/sv01/fnd/AUS/fmt/png/ForeverRun-NITRO%E2%84%A2-Men's-Running-Shoes",
+				prdtName: "PUMA NITRO Shoues",
+				price: 14999,
+				id: 5,
+			},
+			{
+				url: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/377757/04/sv01/fnd/AUS/fmt/png/ForeverRun-NITRO%E2%84%A2-Men's-Running-Shoes",
+				prdtName: "PUMA NITRO Shoues",
+				price: 14999,
+				id: 6,
+			},
+			{
+				url: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/377757/04/sv01/fnd/AUS/fmt/png/ForeverRun-NITRO%E2%84%A2-Men's-Running-Shoes",
+				prdtName: "PUMA NITRO Shoues",
+				price: 14999,
+				id: 7,
+			},
+			{
+				url: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/377757/04/sv01/fnd/AUS/fmt/png/ForeverRun-NITRO%E2%84%A2-Men's-Running-Shoes",
+				prdtName: "PUMA NITRO Shoues",
+				price: 14999,
+				id: 8,
+			},
+		];
+		let cartArr = JSON.parse(localStorage.getItem("cartItems")) || [];
+		pdtArr.forEach(function (el) {
+			let card = document.createElement("div");
+			let imgs = document.createElement("img");
+			imgs.src = el.url;
+			let proName = document.createElement("h3");
+			proName.innerText = el.prdtName;
+			let price = document.createElement("p");
+			price.innerText = el.price;
+			let btn = document.createElement("button");
+			btn.innerText = "Add to Cart";
+			btn.addEventListener("click", function () {
+				addToCart(el);
+			});
+			card.append(imgs, proName, price, btn);
+
+			document.querySelector("#container").append(card);
+		});
+		function addToCart(el) {
+			cartArr.push(el);
+			localStorage.setItem("cartItems", JSON.stringify(cartArr));
+		}
+		console.log(cartArr);
+	</script>
 </html>

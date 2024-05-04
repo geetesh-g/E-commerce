@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>My cart</title>
+		<link rel="stylesheet" href="index.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Your Cart</h1>
+		</header>
+		<main id="container"></main>
+	</body>
+	<script>
+		cartArr = JSON.parse(localStorage.getItem("cartItems")) || [];
+		if (cartArr == []) {
+			let dspl = document.createElement("h2");
+			dspl.innerText = "Cart is empty";
+			document.querySelector("#container").append(dspl);
+		}
+		cartArr.forEach(function (el) {
+			let card = document.createElement("div");
+			let imgs = document.createElement("img");
+			imgs.src = el.url;
+			let proName = document.createElement("h3");
+			proName.innerText = el.prdtName;
+			let price = document.createElement("p");
+			price.innerText = el.price;
+			let btn = document.createElement("button");
+			btn.innerText = "Buy Now";
+			card.append(imgs, proName, price, btn);
+
+			document.querySelector("#container").append(card);
+		});
+	</script>
+</html>
